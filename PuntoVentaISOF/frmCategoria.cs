@@ -1,6 +1,6 @@
 ﻿using Datos;
 
-namespace PuntoVentaISOF
+namespace Pantallas
 {
     public partial class frmCategoria : Form
     {

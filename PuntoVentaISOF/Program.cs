@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Datos;
-namespace PuntoVentaISOF
+namespace Pantallas
 {
     internal static class Program
     {

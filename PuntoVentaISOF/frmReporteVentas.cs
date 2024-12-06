@@ -1,4 +1,4 @@
-﻿namespace PuntoVentaISOF
+﻿namespace Pantallas
 {
     public partial class frmReporteVentas : Form
     {

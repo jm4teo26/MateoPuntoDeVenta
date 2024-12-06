@@ -1,4 +1,4 @@
-﻿namespace PuntoVentaISOF
+﻿namespace Pantallas
 {
     partial class frmClientes
     {

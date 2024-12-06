@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PuntoVentaISOF
+namespace Pantallas
 {
     public partial class frmMenu : Form
     {
