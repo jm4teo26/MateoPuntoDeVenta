@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35507.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pantallas", "PuntoVentaISOF\Pantallas.csproj", "{B9C081E8-6E30-4639-3C07-9EBD144ECD93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pantallas", "Pantallas\Pantallas.csproj", "{B9C081E8-6E30-4639-3C07-9EBD144ECD93}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{BB35B401-4EF4-989E-18E9-C126B008FEAB}"
 EndProject
