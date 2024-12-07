@@ -47,6 +47,28 @@ namespace Datos
                 Console.WriteLine("Usuario agregado exitosamente.");
             }
         }
+        public static Usuario IniciarSesion(string alias, string contrasenia)
+        {
+            using (var context = new SqLiteDbContext())
+            {
+                // Buscar el usuario por alias
+                var usuario = context.Usuarios.FirstOrDefault(u => u.Alias == alias);
+
+                if (usuario == null)
+                {
+                    throw new Exception("El usuario no existe.");
+                }
+
+                // Validar la contraseña (puedes agregar cifrado aquí)
+                if (usuario.Contrasenia != contrasenia)
+                {
+                    throw new Exception("Contraseña incorrecta.");
+                }
+
+                // Retornar el usuario si las credenciales son correctas
+                return usuario;
+            }
+        }
     }
 
     public enum Rol

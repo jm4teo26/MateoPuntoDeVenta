@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            lblUsuario = new Label();
+            lblAlias = new Label();
             lblContraseña = new Label();
-            txtUsuario = new TextBox();
-            txtContrasena = new TextBox();
+            txtAlias = new TextBox();
+            txtContrasenia = new TextBox();
             btnEntrar = new Button();
             btnSalir = new Button();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // lblUsuario
+            // lblAlias
             // 
-            lblUsuario.AutoSize = true;
-            lblUsuario.BackColor = Color.Transparent;
-            lblUsuario.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblUsuario.Location = new Point(94, 232);
-            lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(97, 31);
-            lblUsuario.TabIndex = 1;
-            lblUsuario.Text = "Usuario:";
+            lblAlias.AutoSize = true;
+            lblAlias.BackColor = Color.Transparent;
+            lblAlias.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAlias.Location = new Point(94, 232);
+            lblAlias.Name = "lblAlias";
+            lblAlias.Size = new Size(63, 31);
+            lblAlias.TabIndex = 1;
+            lblAlias.Text = "Alias";
             // 
             // lblContraseña
             // 
@@ -60,20 +60,22 @@
             lblContraseña.TabIndex = 2;
             lblContraseña.Text = "Contraseña:";
             // 
-            // txtUsuario
+            // txtAlias
             // 
-            txtUsuario.Location = new Point(94, 266);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(173, 27);
-            txtUsuario.TabIndex = 3;
+            txtAlias.Location = new Point(94, 266);
+            txtAlias.Name = "txtAlias";
+            txtAlias.Size = new Size(173, 27);
+            txtAlias.TabIndex = 3;
             // 
-            // txtContrasena
+            // txtContrasenia
             // 
-            txtContrasena.Location = new Point(94, 330);
-            txtContrasena.Name = "txtContrasena";
-            txtContrasena.PasswordChar = '*';
-            txtContrasena.Size = new Size(173, 27);
-            txtContrasena.TabIndex = 4;
+            txtContrasenia.Location = new Point(94, 330);
+            txtContrasenia.Name = "txtContrasenia";
+            txtContrasenia.PasswordChar = '*';
+            txtContrasenia.Size = new Size(173, 27);
+            txtContrasenia.TabIndex = 4;
+            txtContrasenia.TextChanged += txtContrasena_TextChanged;
+            txtContrasenia.KeyPress += txtContrasena_KeyPress;
             // 
             // btnEntrar
             // 
@@ -117,10 +119,10 @@
             ClientSize = new Size(386, 510);
             Controls.Add(btnSalir);
             Controls.Add(btnEntrar);
-            Controls.Add(txtContrasena);
-            Controls.Add(txtUsuario);
+            Controls.Add(txtContrasenia);
+            Controls.Add(txtAlias);
             Controls.Add(lblContraseña);
-            Controls.Add(lblUsuario);
+            Controls.Add(lblAlias);
             Controls.Add(pictureBox1);
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
@@ -132,10 +134,10 @@
         }
 
         #endregion
-        private Label lblUsuario;
+        private Label lblAlias;
         private Label lblContraseña;
-        private TextBox txtUsuario;
-        private TextBox txtContrasena;
+        private TextBox txtAlias;
+        private TextBox txtContrasenia;
         private Button btnEntrar;
         private Button btnSalir;
         private PictureBox pictureBox1;

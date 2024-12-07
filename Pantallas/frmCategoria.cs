@@ -1,5 +1,4 @@
 ﻿using Datos;
-
 namespace Pantallas
 {
     public partial class frmCategoria : Form
