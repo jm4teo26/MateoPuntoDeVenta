@@ -30,17 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarios));
             lblUsuarios = new Label();
-            lblNombre = new Label();
-            txtNombre = new TextBox();
-            txtApellidos = new TextBox();
+            lblAlias = new Label();
+            txtAlias = new TextBox();
             txtCorreo = new TextBox();
             lblCorreo = new Label();
-            lblApellidos = new Label();
             lblRol = new Label();
-            txtRol = new TextBox();
             txtConfContrasena = new TextBox();
             lblConfContraseña = new Label();
-            txtContrasena = new TextBox();
+            txtContrasenia = new TextBox();
             label2 = new Label();
             listUsuarios = new ListBox();
             btnGuardar = new Button();
@@ -50,6 +47,7 @@
             btnBuscar = new Button();
             lblBuscar = new Label();
             txtBuscar = new TextBox();
+            cmbRol = new ComboBox();
             SuspendLayout();
             // 
             // lblUsuarios
@@ -63,29 +61,22 @@
             lblUsuarios.Text = "Usuarios";
             lblUsuarios.Click += lblUsuarios_Click;
             // 
-            // lblNombre
+            // lblAlias
             // 
-            lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(12, 42);
-            lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(67, 20);
-            lblNombre.TabIndex = 1;
-            lblNombre.Text = "Nombre:";
+            lblAlias.AutoSize = true;
+            lblAlias.Location = new Point(12, 42);
+            lblAlias.Name = "lblAlias";
+            lblAlias.Size = new Size(44, 20);
+            lblAlias.TabIndex = 1;
+            lblAlias.Text = "Alias:";
             // 
-            // txtNombre
+            // txtAlias
             // 
-            txtNombre.Location = new Point(85, 39);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(158, 27);
-            txtNombre.TabIndex = 2;
-            txtNombre.TextChanged += txtNombre_TextChanged;
-            // 
-            // txtApellidos
-            // 
-            txtApellidos.Location = new Point(321, 39);
-            txtApellidos.Name = "txtApellidos";
-            txtApellidos.Size = new Size(300, 27);
-            txtApellidos.TabIndex = 4;
+            txtAlias.Location = new Point(85, 39);
+            txtAlias.Name = "txtAlias";
+            txtAlias.Size = new Size(158, 27);
+            txtAlias.TabIndex = 2;
+            txtAlias.TextChanged += txtNombre_TextChanged;
             // 
             // txtCorreo
             // 
@@ -103,15 +94,6 @@
             lblCorreo.TabIndex = 5;
             lblCorreo.Text = "Correo:";
             // 
-            // lblApellidos
-            // 
-            lblApellidos.AutoSize = true;
-            lblApellidos.Location = new Point(248, 42);
-            lblApellidos.Name = "lblApellidos";
-            lblApellidos.Size = new Size(75, 20);
-            lblApellidos.TabIndex = 3;
-            lblApellidos.Text = "Apellidos:";
-            // 
             // lblRol
             // 
             lblRol.AutoSize = true;
@@ -120,13 +102,6 @@
             lblRol.Size = new Size(34, 20);
             lblRol.TabIndex = 8;
             lblRol.Text = "Rol:";
-            // 
-            // txtRol
-            // 
-            txtRol.Location = new Point(448, 72);
-            txtRol.Name = "txtRol";
-            txtRol.Size = new Size(173, 27);
-            txtRol.TabIndex = 9;
             // 
             // txtConfContrasena
             // 
@@ -145,12 +120,12 @@
             lblConfContraseña.Text = "Confirmar Contraseña:";
             lblConfContraseña.Click += label1_Click;
             // 
-            // txtContrasena
+            // txtContrasenia
             // 
-            txtContrasena.Location = new Point(101, 110);
-            txtContrasena.Name = "txtContrasena";
-            txtContrasena.Size = new Size(173, 27);
-            txtContrasena.TabIndex = 11;
+            txtContrasenia.Location = new Point(101, 110);
+            txtContrasenia.Name = "txtContrasenia";
+            txtContrasenia.Size = new Size(173, 27);
+            txtContrasenia.TabIndex = 11;
             // 
             // label2
             // 
@@ -177,6 +152,7 @@
             btnGuardar.TabIndex = 15;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnModificar
             // 
@@ -232,12 +208,21 @@
             txtBuscar.TabIndex = 30;
             txtBuscar.Text = "ID del Usuario";
             // 
+            // cmbRol
+            // 
+            cmbRol.FormattingEnabled = true;
+            cmbRol.Location = new Point(448, 75);
+            cmbRol.Name = "cmbRol";
+            cmbRol.Size = new Size(151, 28);
+            cmbRol.TabIndex = 32;
+            // 
             // frmUsuarios
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(643, 450);
+            Controls.Add(cmbRol);
             Controls.Add(btnBuscar);
             Controls.Add(txtBuscar);
             Controls.Add(lblBuscar);
@@ -248,16 +233,13 @@
             Controls.Add(listUsuarios);
             Controls.Add(txtConfContrasena);
             Controls.Add(lblConfContraseña);
-            Controls.Add(txtContrasena);
+            Controls.Add(txtContrasenia);
             Controls.Add(label2);
-            Controls.Add(txtRol);
             Controls.Add(lblRol);
             Controls.Add(txtCorreo);
             Controls.Add(lblCorreo);
-            Controls.Add(txtApellidos);
-            Controls.Add(lblApellidos);
-            Controls.Add(txtNombre);
-            Controls.Add(lblNombre);
+            Controls.Add(txtAlias);
+            Controls.Add(lblAlias);
             Controls.Add(lblUsuarios);
             Name = "frmUsuarios";
             Text = "Usuarios";
@@ -269,17 +251,14 @@
         #endregion
 
         private Label lblUsuarios;
-        private Label lblNombre;
-        private TextBox txtNombre;
-        private TextBox txtApellidos;
+        private Label lblAlias;
+        private TextBox txtAlias;
         private TextBox txtCorreo;
         private Label lblCorreo;
-        private Label lblApellidos;
         private Label lblRol;
-        private TextBox txtRol;
         private TextBox txtConfContrasena;
         private Label lblConfContraseña;
-        private TextBox txtContrasena;
+        private TextBox txtContrasenia;
         private Label label2;
         private ListBox listUsuarios;
         private Button btnGuardar;
@@ -289,5 +268,6 @@
         private Button btnBuscar;
         private Label lblBuscar;
         private TextBox txtBuscar;
+        private ComboBox cmbRol;
     }
 }

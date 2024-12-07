@@ -21,30 +21,32 @@ namespace Datos
 
         public Rol Rol { get; set; } // Admin, Cajero, etc.
 
-        public static Usuario IniciarSesion(string alias, string contrasenia)
+        // Método estático para agregar un usuario
+        public static void AgregarUsuario(string alias, string correo, string contrasenia, Rol rol)
         {
-            using (var context = new SqLiteDbContext()) // Acceso al DbContext
+            using (var context = new SqLiteDbContext())
             {
-                // Buscar al usuario en la base de datos por alias
-                var usuario = context.Usuarios.FirstOrDefault(u => u.Alias == alias);
-
-                if (usuario == null)
+                // Verificar si ya existe un usuario con el mismo alias
+                if (context.Usuarios.Any(u => u.Alias == alias))
                 {
-                    throw new Exception("El usuario no existe.");
+                    throw new Exception("El alias ya está en uso.");
                 }
 
-                // Validar la contraseña
-                if (usuario.Contrasenia != contrasenia)
+                // Crear un nuevo usuario
+                var nuevoUsuario = new Usuario
                 {
-                    throw new Exception("Contraseña incorrecta.");
-                }
+                    Alias = alias,
+                    Correo = correo,
+                    Contrasenia = contrasenia, // Considera cifrar la contraseña
+                    Rol = rol
+                };
 
-                // Retornar el usuario si todo es válido
-                return usuario;
+                context.Usuarios.Add(nuevoUsuario);
+                context.SaveChanges();
+
+                Console.WriteLine("Usuario agregado exitosamente.");
             }
         }
-
-
     }
 
     public enum Rol
