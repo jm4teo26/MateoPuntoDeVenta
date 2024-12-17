@@ -21,6 +21,7 @@ namespace Datos
 
         //DbSets de cada Formulario
         public DbSet<Categoria> Categorias { get; set; }
+
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<ProductosVentas> DetalleVentas { get; set; }
         public DbSet<Producto> Productos { get; set; }

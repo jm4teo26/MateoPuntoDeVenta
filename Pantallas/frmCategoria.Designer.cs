@@ -30,18 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategoria));
             lblCategoria = new Label();
-            lblDescripcion = new Label();
-            textBox1 = new TextBox();
             btnGuardar = new Button();
             btnModificar = new Button();
             btnEliminar = new Button();
-            listCategoria = new ListBox();
             lblListCategorias = new Label();
             lblBuscar = new Label();
             txtBuscar = new TextBox();
             btnBuscar = new Button();
-            textBox2 = new TextBox();
+            txtNuevaCategoria = new TextBox();
             lblNombreCategoria = new Label();
+            dgvCategorias = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvCategorias).BeginInit();
             SuspendLayout();
             // 
             // lblCategoria
@@ -54,35 +53,19 @@
             lblCategoria.TabIndex = 0;
             lblCategoria.Text = "Categoria";
             // 
-            // lblDescripcion
-            // 
-            lblDescripcion.AutoSize = true;
-            lblDescripcion.Location = new Point(12, 97);
-            lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(90, 20);
-            lblDescripcion.TabIndex = 1;
-            lblDescripcion.Text = "Descripción:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(12, 120);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(165, 27);
-            textBox1.TabIndex = 2;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(52, 153);
+            btnGuardar.Location = new Point(56, 225);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(94, 29);
             btnGuardar.TabIndex = 3;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(52, 188);
+            btnModificar.Location = new Point(56, 260);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(94, 29);
             btnModificar.TabIndex = 4;
@@ -91,20 +74,12 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(52, 223);
+            btnEliminar.Location = new Point(56, 295);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(94, 29);
             btnEliminar.TabIndex = 5;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // listCategoria
-            // 
-            listCategoria.FormattingEnabled = true;
-            listCategoria.Location = new Point(235, 120);
-            listCategoria.Name = "listCategoria";
-            listCategoria.Size = new Size(586, 284);
-            listCategoria.TabIndex = 6;
             // 
             // lblListCategorias
             // 
@@ -142,21 +117,31 @@
             btnBuscar.TabIndex = 27;
             btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txtNuevaCategoria
             // 
-            textBox2.Location = new Point(12, 73);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(165, 27);
-            textBox2.TabIndex = 29;
+            txtNuevaCategoria.Location = new Point(12, 120);
+            txtNuevaCategoria.Name = "txtNuevaCategoria";
+            txtNuevaCategoria.Size = new Size(165, 27);
+            txtNuevaCategoria.TabIndex = 29;
             // 
             // lblNombreCategoria
             // 
             lblNombreCategoria.AutoSize = true;
-            lblNombreCategoria.Location = new Point(12, 50);
+            lblNombreCategoria.Location = new Point(12, 97);
             lblNombreCategoria.Name = "lblNombreCategoria";
             lblNombreCategoria.Size = new Size(67, 20);
             lblNombreCategoria.TabIndex = 28;
             lblNombreCategoria.Text = "Nombre:";
+            // 
+            // dgvCategorias
+            // 
+            dgvCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCategorias.Location = new Point(225, 97);
+            dgvCategorias.Name = "dgvCategorias";
+            dgvCategorias.RowHeadersWidth = 51;
+            dgvCategorias.Size = new Size(605, 309);
+            dgvCategorias.TabIndex = 30;
+            dgvCategorias.CellContentClick += dvgCategorias_CellContentClick;
             // 
             // frmCategoria
             // 
@@ -164,22 +149,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(878, 450);
-            Controls.Add(textBox2);
+            Controls.Add(dgvCategorias);
+            Controls.Add(txtNuevaCategoria);
             Controls.Add(lblNombreCategoria);
             Controls.Add(btnBuscar);
             Controls.Add(txtBuscar);
             Controls.Add(lblBuscar);
             Controls.Add(lblListCategorias);
-            Controls.Add(listCategoria);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
             Controls.Add(btnGuardar);
-            Controls.Add(textBox1);
-            Controls.Add(lblDescripcion);
             Controls.Add(lblCategoria);
             Name = "frmCategoria";
             Text = "Mantener - Categoria";
             Load += frmCategoria_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvCategorias).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -187,17 +171,15 @@
         #endregion
 
         private Label lblCategoria;
-        private Label lblDescripcion;
-        private TextBox textBox1;
         private Button btnGuardar;
         private Button btnModificar;
         private Button btnEliminar;
-        private ListBox listCategoria;
         private Label lblListCategorias;
         private Label lblBuscar;
         private TextBox txtBuscar;
         private Button btnBuscar;
-        private TextBox textBox2;
+        private TextBox txtNuevaCategoria;
         private Label lblNombreCategoria;
+        private DataGridView dgvCategorias;
     }
 }

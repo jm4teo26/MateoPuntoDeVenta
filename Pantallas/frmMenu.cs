@@ -25,7 +25,6 @@ namespace Pantallas
         {
             ComponentResourceManager resources = new ComponentResourceManager(typeof(frmMenu));
             btnUsuarios = new Button();
-            btnMantener = new Button();
             btnVentas = new Button();
             btnCompras = new Button();
             btnClientes = new Button();
@@ -41,7 +40,7 @@ namespace Pantallas
             btnUsuarios.Font = new Font("Microsoft Sans Serif", 12F);
             btnUsuarios.Image = (Image)resources.GetObject("btnUsuarios.Image");
             btnUsuarios.ImageAlign = ContentAlignment.TopCenter;
-            btnUsuarios.Location = new Point(41, 36);
+            btnUsuarios.Location = new Point(75, 90);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.Size = new Size(99, 99);
             btnUsuarios.TabIndex = 0;
@@ -51,29 +50,13 @@ namespace Pantallas
             btnUsuarios.UseVisualStyleBackColor = true;
             btnUsuarios.Click += btnUsuarios_Click;
             // 
-            // btnMantener
-            // 
-            btnMantener.AutoSize = true;
-            btnMantener.Font = new Font("Microsoft Sans Serif", 12F);
-            btnMantener.Image = (Image)resources.GetObject("btnMantener.Image");
-            btnMantener.ImageAlign = ContentAlignment.TopCenter;
-            btnMantener.Location = new Point(41, 171);
-            btnMantener.Name = "btnMantener";
-            btnMantener.Size = new Size(105, 99);
-            btnMantener.TabIndex = 1;
-            btnMantener.Text = "Mantener";
-            btnMantener.TextAlign = ContentAlignment.BottomCenter;
-            btnMantener.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnMantener.UseVisualStyleBackColor = true;
-            btnMantener.Click += btnMantener_Click;
-            // 
             // btnVentas
             // 
             btnVentas.AutoSize = true;
             btnVentas.Font = new Font("Microsoft Sans Serif", 12F);
             btnVentas.Image = (Image)resources.GetObject("btnVentas.Image");
             btnVentas.ImageAlign = ContentAlignment.TopCenter;
-            btnVentas.Location = new Point(168, 36);
+            btnVentas.Location = new Point(202, 90);
             btnVentas.Name = "btnVentas";
             btnVentas.Size = new Size(96, 99);
             btnVentas.TabIndex = 2;
@@ -89,7 +72,7 @@ namespace Pantallas
             btnCompras.Font = new Font("Microsoft Sans Serif", 12F);
             btnCompras.Image = (Image)resources.GetObject("btnCompras.Image");
             btnCompras.ImageAlign = ContentAlignment.TopCenter;
-            btnCompras.Location = new Point(168, 171);
+            btnCompras.Location = new Point(126, 215);
             btnCompras.Name = "btnCompras";
             btnCompras.Size = new Size(102, 99);
             btnCompras.TabIndex = 3;
@@ -105,7 +88,7 @@ namespace Pantallas
             btnClientes.Font = new Font("Microsoft Sans Serif", 12F);
             btnClientes.Image = (Image)resources.GetObject("btnClientes.Image");
             btnClientes.ImageAlign = ContentAlignment.TopCenter;
-            btnClientes.Location = new Point(308, 36);
+            btnClientes.Location = new Point(342, 90);
             btnClientes.Name = "btnClientes";
             btnClientes.Size = new Size(93, 99);
             btnClientes.TabIndex = 4;
@@ -121,7 +104,7 @@ namespace Pantallas
             btnProveedores.Font = new Font("Microsoft Sans Serif", 12F);
             btnProveedores.Image = (Image)resources.GetObject("btnProveedores.Image");
             btnProveedores.ImageAlign = ContentAlignment.TopCenter;
-            btnProveedores.Location = new Point(41, 289);
+            btnProveedores.Location = new Point(181, 332);
             btnProveedores.Name = "btnProveedores";
             btnProveedores.Size = new Size(133, 99);
             btnProveedores.TabIndex = 5;
@@ -137,7 +120,7 @@ namespace Pantallas
             btnEstadisticas.Font = new Font("Microsoft Sans Serif", 12F);
             btnEstadisticas.Image = (Image)resources.GetObject("btnEstadisticas.Image");
             btnEstadisticas.ImageAlign = ContentAlignment.TopCenter;
-            btnEstadisticas.Location = new Point(295, 171);
+            btnEstadisticas.Location = new Point(269, 215);
             btnEstadisticas.Name = "btnEstadisticas";
             btnEstadisticas.Size = new Size(126, 99);
             btnEstadisticas.TabIndex = 6;
@@ -149,7 +132,7 @@ namespace Pantallas
             // 
             // btnProductos
             // 
-            btnProductos.Location = new Point(638, 391);
+            btnProductos.Location = new Point(565, 12);
             btnProductos.Name = "btnProductos";
             btnProductos.Size = new Size(132, 67);
             btnProductos.TabIndex = 7;
@@ -159,17 +142,18 @@ namespace Pantallas
             // 
             // btnCategorias
             // 
-            btnCategorias.Location = new Point(789, 394);
+            btnCategorias.Location = new Point(576, 90);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.Size = new Size(105, 64);
             btnCategorias.TabIndex = 8;
             btnCategorias.Text = "CATEGORIAS";
             btnCategorias.UseVisualStyleBackColor = true;
+            btnCategorias.Click += btnCategorias_Click;
             // 
             // frmMenu
             // 
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1009, 470);
+            ClientSize = new Size(773, 470);
             Controls.Add(btnCategorias);
             Controls.Add(btnProductos);
             Controls.Add(btnEstadisticas);
@@ -177,7 +161,6 @@ namespace Pantallas
             Controls.Add(btnClientes);
             Controls.Add(btnCompras);
             Controls.Add(btnVentas);
-            Controls.Add(btnMantener);
             Controls.Add(btnUsuarios);
             Name = "frmMenu";
             Text = "Menú Principal";
@@ -187,7 +170,6 @@ namespace Pantallas
         }
 
         private Button btnUsuarios;
-        private Button btnMantener;
         private Button btnVentas;
         private Button btnCompras;
         private Button btnClientes;
@@ -226,13 +208,19 @@ namespace Pantallas
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             frmProductos objProductos = new frmProductos();
             objProductos.Show();
+        }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            frmCategoria objCategoria = new frmCategoria();
+            objCategoria.Show();
         }
     }
 }

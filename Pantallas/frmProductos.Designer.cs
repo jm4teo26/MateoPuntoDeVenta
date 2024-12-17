@@ -32,7 +32,6 @@
             txtBuscar = new TextBox();
             lblBuscar = new Label();
             lblListCategorias = new Label();
-            listProducto = new ListBox();
             btnEliminar = new Button();
             btnModificar = new Button();
             btnGuardar = new Button();
@@ -48,6 +47,8 @@
             txtStock = new TextBox();
             txtPrecioCompra = new TextBox();
             lblPrecioCompra = new Label();
+            dgvProductos = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
             SuspendLayout();
             // 
             // txtBuscar
@@ -76,14 +77,6 @@
             lblListCategorias.Size = new Size(207, 31);
             lblListCategorias.TabIndex = 17;
             lblListCategorias.Text = "Lista de Productos:";
-            // 
-            // listProducto
-            // 
-            listProducto.FormattingEnabled = true;
-            listProducto.Location = new Point(223, 110);
-            listProducto.Name = "listProducto";
-            listProducto.Size = new Size(586, 284);
-            listProducto.TabIndex = 16;
             // 
             // btnEliminar
             // 
@@ -214,12 +207,23 @@
             lblPrecioCompra.TabIndex = 30;
             lblPrecioCompra.Text = "Precio Compra";
             // 
+            // dgvProductos
+            // 
+            dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProductos.Location = new Point(213, 92);
+            dgvProductos.Name = "dgvProductos";
+            dgvProductos.RowHeadersWidth = 51;
+            dgvProductos.Size = new Size(605, 320);
+            dgvProductos.TabIndex = 32;
+            dgvProductos.CellContentClick += dataGridView1_CellContentClick;
+            // 
             // frmProductos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(849, 450);
+            Controls.Add(dgvProductos);
             Controls.Add(txtPrecioCompra);
             Controls.Add(lblPrecioCompra);
             Controls.Add(txtStock);
@@ -234,7 +238,6 @@
             Controls.Add(txtBuscar);
             Controls.Add(lblBuscar);
             Controls.Add(lblListCategorias);
-            Controls.Add(listProducto);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
             Controls.Add(btnGuardar);
@@ -242,6 +245,7 @@
             Name = "frmProductos";
             Text = "Productos";
             Load += frmProductos_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -251,7 +255,6 @@
         private TextBox txtBuscar;
         private Label lblBuscar;
         private Label lblListCategorias;
-        private ListBox listProducto;
         private Button btnEliminar;
         private Button btnModificar;
         private Button btnGuardar;
@@ -267,5 +270,6 @@
         private TextBox txtStock;
         private TextBox txtPrecioCompra;
         private Label lblPrecioCompra;
+        private DataGridView dgvProductos;
     }
 }
