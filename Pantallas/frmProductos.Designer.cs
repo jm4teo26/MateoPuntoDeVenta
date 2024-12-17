@@ -36,16 +36,18 @@
             btnEliminar = new Button();
             btnModificar = new Button();
             btnGuardar = new Button();
-            txtID = new TextBox();
-            lblID = new Label();
             lblProductos = new Label();
-            txtNombre = new TextBox();
+            txtNombreProducto = new TextBox();
             lblNombre = new Label();
-            txtDescriipción = new TextBox();
-            lblDescripcion = new Label();
-            txtCategoria = new TextBox();
+            txtPrecioUnitario = new TextBox();
+            lblPrecioUnitario = new Label();
             lblCategoria = new Label();
             btnBuscar = new Button();
+            cmbCategoria = new ComboBox();
+            lblStock = new Label();
+            txtStock = new TextBox();
+            txtPrecioCompra = new TextBox();
+            lblPrecioCompra = new Label();
             SuspendLayout();
             // 
             // txtBuscar
@@ -85,7 +87,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(40, 326);
+            btnEliminar.Location = new Point(48, 399);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(94, 29);
             btnEliminar.TabIndex = 15;
@@ -94,7 +96,7 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(40, 291);
+            btnModificar.Location = new Point(48, 364);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(94, 29);
             btnModificar.TabIndex = 14;
@@ -103,28 +105,13 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(40, 256);
+            btnGuardar.Location = new Point(48, 329);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(94, 29);
             btnGuardar.TabIndex = 13;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
-            // 
-            // txtID
-            // 
-            txtID.Location = new Point(12, 53);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(165, 27);
-            txtID.TabIndex = 12;
-            // 
-            // lblID
-            // 
-            lblID.AutoSize = true;
-            lblID.Location = new Point(12, 30);
-            lblID.Name = "lblID";
-            lblID.Size = new Size(27, 20);
-            lblID.TabIndex = 11;
-            lblID.Text = "ID:";
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // lblProductos
             // 
@@ -136,49 +123,42 @@
             lblProductos.TabIndex = 10;
             lblProductos.Text = "Productos";
             // 
-            // txtNombre
+            // txtNombreProducto
             // 
-            txtNombre.Location = new Point(12, 110);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(165, 27);
-            txtNombre.TabIndex = 21;
+            txtNombreProducto.Location = new Point(12, 61);
+            txtNombreProducto.Name = "txtNombreProducto";
+            txtNombreProducto.Size = new Size(165, 27);
+            txtNombreProducto.TabIndex = 21;
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(12, 87);
+            lblNombre.Location = new Point(12, 38);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(64, 20);
             lblNombre.TabIndex = 20;
             lblNombre.Text = "Nombre";
             // 
-            // txtDescriipción
+            // txtPrecioUnitario
             // 
-            txtDescriipción.Location = new Point(12, 164);
-            txtDescriipción.Name = "txtDescriipción";
-            txtDescriipción.Size = new Size(165, 27);
-            txtDescriipción.TabIndex = 23;
+            txtPrecioUnitario.Location = new Point(12, 115);
+            txtPrecioUnitario.Name = "txtPrecioUnitario";
+            txtPrecioUnitario.Size = new Size(165, 27);
+            txtPrecioUnitario.TabIndex = 23;
             // 
-            // lblDescripcion
+            // lblPrecioUnitario
             // 
-            lblDescripcion.AutoSize = true;
-            lblDescripcion.Location = new Point(12, 141);
-            lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(87, 20);
-            lblDescripcion.TabIndex = 22;
-            lblDescripcion.Text = "Descripción";
-            // 
-            // txtCategoria
-            // 
-            txtCategoria.Location = new Point(12, 214);
-            txtCategoria.Name = "txtCategoria";
-            txtCategoria.Size = new Size(165, 27);
-            txtCategoria.TabIndex = 25;
+            lblPrecioUnitario.AutoSize = true;
+            lblPrecioUnitario.Location = new Point(12, 92);
+            lblPrecioUnitario.Name = "lblPrecioUnitario";
+            lblPrecioUnitario.Size = new Size(110, 20);
+            lblPrecioUnitario.TabIndex = 22;
+            lblPrecioUnitario.Text = "Precio Unitario:";
             // 
             // lblCategoria
             // 
             lblCategoria.AutoSize = true;
-            lblCategoria.Location = new Point(12, 191);
+            lblCategoria.Location = new Point(12, 198);
             lblCategoria.Name = "lblCategoria";
             lblCategoria.Size = new Size(77, 20);
             lblCategoria.TabIndex = 24;
@@ -194,18 +174,62 @@
             btnBuscar.TabIndex = 26;
             btnBuscar.UseVisualStyleBackColor = true;
             // 
+            // cmbCategoria
+            // 
+            cmbCategoria.FormattingEnabled = true;
+            cmbCategoria.Location = new Point(12, 221);
+            cmbCategoria.Name = "cmbCategoria";
+            cmbCategoria.Size = new Size(151, 28);
+            cmbCategoria.TabIndex = 27;
+            // 
+            // lblStock
+            // 
+            lblStock.AutoSize = true;
+            lblStock.Location = new Point(12, 252);
+            lblStock.Name = "lblStock";
+            lblStock.Size = new Size(48, 20);
+            lblStock.TabIndex = 28;
+            lblStock.Text = "Stock:";
+            // 
+            // txtStock
+            // 
+            txtStock.Location = new Point(17, 275);
+            txtStock.Name = "txtStock";
+            txtStock.Size = new Size(146, 27);
+            txtStock.TabIndex = 29;
+            // 
+            // txtPrecioCompra
+            // 
+            txtPrecioCompra.Location = new Point(12, 168);
+            txtPrecioCompra.Name = "txtPrecioCompra";
+            txtPrecioCompra.Size = new Size(165, 27);
+            txtPrecioCompra.TabIndex = 31;
+            // 
+            // lblPrecioCompra
+            // 
+            lblPrecioCompra.AutoSize = true;
+            lblPrecioCompra.Location = new Point(12, 145);
+            lblPrecioCompra.Name = "lblPrecioCompra";
+            lblPrecioCompra.Size = new Size(107, 20);
+            lblPrecioCompra.TabIndex = 30;
+            lblPrecioCompra.Text = "Precio Compra";
+            // 
             // frmProductos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(849, 450);
+            Controls.Add(txtPrecioCompra);
+            Controls.Add(lblPrecioCompra);
+            Controls.Add(txtStock);
+            Controls.Add(lblStock);
+            Controls.Add(cmbCategoria);
             Controls.Add(btnBuscar);
-            Controls.Add(txtCategoria);
             Controls.Add(lblCategoria);
-            Controls.Add(txtDescriipción);
-            Controls.Add(lblDescripcion);
-            Controls.Add(txtNombre);
+            Controls.Add(txtPrecioUnitario);
+            Controls.Add(lblPrecioUnitario);
+            Controls.Add(txtNombreProducto);
             Controls.Add(lblNombre);
             Controls.Add(txtBuscar);
             Controls.Add(lblBuscar);
@@ -214,11 +238,10 @@
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
             Controls.Add(btnGuardar);
-            Controls.Add(txtID);
-            Controls.Add(lblID);
             Controls.Add(lblProductos);
             Name = "frmProductos";
             Text = "Productos";
+            Load += frmProductos_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -232,15 +255,17 @@
         private Button btnEliminar;
         private Button btnModificar;
         private Button btnGuardar;
-        private TextBox txtID;
-        private Label lblID;
         private Label lblProductos;
-        private TextBox txtNombre;
+        private TextBox txtNombreProducto;
         private Label lblNombre;
-        private TextBox txtDescriipción;
-        private Label lblDescripcion;
-        private TextBox txtCategoria;
+        private TextBox txtPrecioUnitario;
+        private Label lblPrecioUnitario;
         private Label lblCategoria;
         private Button btnBuscar;
+        private ComboBox cmbCategoria;
+        private Label lblStock;
+        private TextBox txtStock;
+        private TextBox txtPrecioCompra;
+        private Label lblPrecioCompra;
     }
 }

@@ -69,6 +69,24 @@ namespace Datos
                 return usuario;
             }
         }
+
+        public static void RestablecerContrasenia(string alias, string correo, string nuevaContrasenia)
+        {
+            using (var context = new SqLiteDbContext())
+            {
+                // Buscar el usuario por alias y correo
+                var usuario = context.Usuarios.FirstOrDefault(u => u.Alias == alias && u.Correo == correo);
+
+                if (usuario == null)
+                {
+                    throw new Exception("No se encontró un usuario con ese alias y correo.");
+                }
+
+                // Actualizar la contraseña (considera cifrarla)
+                usuario.Contrasenia = nuevaContrasenia;
+                context.SaveChanges();
+            }
+        }
     }
 
     public enum Rol

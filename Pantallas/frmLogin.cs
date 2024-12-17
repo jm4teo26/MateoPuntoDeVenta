@@ -72,7 +72,13 @@ namespace Pantallas
 
         private void txtContrasena_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            var formRestablecer = new frmRestablecerContrasenia();
+            formRestablecer.ShowDialog();
         }
     }
 }

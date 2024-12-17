@@ -31,6 +31,8 @@ namespace Pantallas
             btnClientes = new Button();
             btnProveedores = new Button();
             btnEstadisticas = new Button();
+            btnProductos = new Button();
+            btnCategorias = new Button();
             SuspendLayout();
             // 
             // btnUsuarios
@@ -119,7 +121,7 @@ namespace Pantallas
             btnProveedores.Font = new Font("Microsoft Sans Serif", 12F);
             btnProveedores.Image = (Image)resources.GetObject("btnProveedores.Image");
             btnProveedores.ImageAlign = ContentAlignment.TopCenter;
-            btnProveedores.Location = new Point(156, 294);
+            btnProveedores.Location = new Point(41, 289);
             btnProveedores.Name = "btnProveedores";
             btnProveedores.Size = new Size(133, 99);
             btnProveedores.TabIndex = 5;
@@ -145,10 +147,31 @@ namespace Pantallas
             btnEstadisticas.UseVisualStyleBackColor = true;
             btnEstadisticas.Click += btnEstadisticas_Click;
             // 
+            // btnProductos
+            // 
+            btnProductos.Location = new Point(638, 391);
+            btnProductos.Name = "btnProductos";
+            btnProductos.Size = new Size(132, 67);
+            btnProductos.TabIndex = 7;
+            btnProductos.Text = "PRODUCTOS";
+            btnProductos.UseVisualStyleBackColor = true;
+            btnProductos.Click += button1_Click;
+            // 
+            // btnCategorias
+            // 
+            btnCategorias.Location = new Point(789, 394);
+            btnCategorias.Name = "btnCategorias";
+            btnCategorias.Size = new Size(105, 64);
+            btnCategorias.TabIndex = 8;
+            btnCategorias.Text = "CATEGORIAS";
+            btnCategorias.UseVisualStyleBackColor = true;
+            // 
             // frmMenu
             // 
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(445, 428);
+            ClientSize = new Size(1009, 470);
+            Controls.Add(btnCategorias);
+            Controls.Add(btnProductos);
             Controls.Add(btnEstadisticas);
             Controls.Add(btnProveedores);
             Controls.Add(btnClientes);
@@ -158,6 +181,7 @@ namespace Pantallas
             Controls.Add(btnUsuarios);
             Name = "frmMenu";
             Text = "Menú Principal";
+            Load += frmMenu_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -168,6 +192,8 @@ namespace Pantallas
         private Button btnCompras;
         private Button btnClientes;
         private Button btnProveedores;
+        private Button btnProductos;
+        private Button btnCategorias;
         private Button btnEstadisticas;
 
         private void btnVentas_Click(object sender, EventArgs e)
@@ -196,6 +222,17 @@ namespace Pantallas
         {
             frmProveedores objProveedores = new frmProveedores();
             objProveedores.Show();
+        }
+
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmProductos objProductos = new frmProductos();
+            objProductos.Show();
         }
     }
 }

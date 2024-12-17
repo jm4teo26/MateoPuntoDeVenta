@@ -36,6 +36,7 @@
             btnEntrar = new Button();
             btnSalir = new Button();
             pictureBox1 = new PictureBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -111,12 +112,23 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(56, 360);
+            label1.Name = "label1";
+            label1.Size = new Size(245, 20);
+            label1.TabIndex = 8;
+            label1.Text = "¿Olvidaste tu contraseña? Clicl Aqui";
+            label1.Click += label1_Click;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(386, 510);
+            Controls.Add(label1);
             Controls.Add(btnSalir);
             Controls.Add(btnEntrar);
             Controls.Add(txtContrasenia);
@@ -141,5 +153,6 @@
         private Button btnEntrar;
         private Button btnSalir;
         private PictureBox pictureBox1;
+        private Label label1;
     }
 }
