@@ -30,27 +30,6 @@ namespace Datos
 
         //Relacion con la clase Productosventas
         public List<ProductosVentas> ProductosVentas { get; set; }
-
-        public static void GuardarProducto(string nombre, decimal precioUnitario, decimal precioCompra, int stock, int categoriaId)
-        {
-            using (var context = new SqLiteDbContext())  // Usamos el contexto para interactuar con la base de datos
-            {
-                // Crear una nueva instancia de Producto
-                var producto = new Producto
-                {
-                    Nombre = nombre,
-                    PrecioUnitario = precioUnitario,
-                    PrecioCompra = precioCompra,
-                    Stock = stock,
-                    CategoriaId = categoriaId
-                };
-
-                // Agregar el producto al contexto y guardar los cambios
-                context.Productos.Add(producto);
-                context.SaveChanges();  // Guardar en la base de datos
-            }
-        }
-
     }
 
 }

@@ -6,7 +6,6 @@ namespace Datos
     [Table("ProductosVentas")]
     public class ProductosVentas
     {
-
         [ForeignKey("FK_ProductosVentas_Ventas_Id")]
         public int VentaId { get; set; }
 
@@ -14,14 +13,14 @@ namespace Datos
         public int ProductoId { get; set; }
 
         [Required]
-        public int PrecioVenta { get; set; }
-        
+        public decimal PrecioVenta { get; set; }
+
         [Required]
         public int Cantidad { get; set; }
 
-        public int Total { get; set; }
+        public decimal Total { get; set; }
 
-        //Para manejo de EF Core
+        // Para manejo de EF Core
         public Venta Venta { get; set; }
         public Producto Producto { get; set; }
     }

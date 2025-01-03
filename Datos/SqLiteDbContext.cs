@@ -23,7 +23,7 @@ namespace Datos
         public DbSet<Categoria> Categorias { get; set; }
 
         public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<ProductosVentas> DetalleVentas { get; set; }
+        public DbSet<ProductosVentas> ProductosVentas { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Venta> Ventas { get; set; }
