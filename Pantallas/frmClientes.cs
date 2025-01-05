@@ -10,13 +10,14 @@ namespace Pantallas
     {
         public frmClientes()
         {
-            InitializeComponent(); // Asegúrate de que InitializeComponent esté primero
-            CargarClientes(); // Mueve CargarClientes después de InitializeComponent
+            InitializeComponent();
+            txtId.ReadOnly = true;
+            CargarClientes();
         }
 
         private void frmClientes_Load(object sender, EventArgs e)
         {
-            // Aquí puedes agregar algo si es necesario
+            txtId.ReadOnly = true;
         }
 
         private void CargarClientes()
@@ -27,7 +28,7 @@ namespace Pantallas
                 if (clientes != null && clientes.Count > 0)
                 {
                     dgvClientes.DataSource = clientes;
-                    dgvClientes.AutoGenerateColumns = true; // Esto asegura que las columnas se generen correctamente
+                    dgvClientes.AutoGenerateColumns = true;
                 }
                 else
                 {
@@ -66,7 +67,7 @@ namespace Pantallas
                 Cliente.ActualizarCliente(cliente);
             }
 
-            CargarClientes(); // Actualizar el DataGridView
+            CargarClientes();
             MessageBox.Show("Cliente guardado correctamente.");
         }
 
@@ -76,7 +77,7 @@ namespace Pantallas
             {
                 int clienteId = Convert.ToInt32(dgvClientes.SelectedRows[0].Cells[0].Value);
                 Cliente.EliminarCliente(clienteId);
-                CargarClientes(); // Actualizar el DataGridView
+                CargarClientes();
                 MessageBox.Show("Cliente eliminado correctamente.");
             }
             else
@@ -87,9 +88,39 @@ namespace Pantallas
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            var criterio = txtNombre.Text;
-            var clientes = Cliente.BuscarClientes(criterio);
-            dgvClientes.DataSource = clientes;
+            using (var context = new SqLiteDbContext())
+            {
+                // Obtén el texto del TextBox de búsqueda
+                var criterio = txtBuscar.Text.Trim();
+
+                // Lista de clientes que coinciden con la búsqueda
+                List<Cliente> clientes;
+
+                // Verifica si el criterio es un número (para buscar por Id)
+                if (int.TryParse(criterio, out int id))
+                {
+                    // Buscar por Id
+                    clientes = context.Clientes
+                        .Where(c => c.Id == id)
+                        .ToList();
+                }
+                else
+                {
+                    // Buscar por Nombre o Apellido
+                    clientes = context.Clientes
+                        .Where(c => c.Nombre.Contains(criterio) || c.Apellido.Contains(criterio))
+                        .ToList();
+                }
+
+                // Actualiza el DataGridView con los resultados
+                dgvClientes.DataSource = clientes;
+
+                // Muestra un mensaje si no se encontraron resultados
+                if (clientes.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron clientes que coincidan con la búsqueda.", "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -106,6 +137,22 @@ namespace Pantallas
                     txtTelefono.Text = cliente.Telefono;
                 }
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            CargarClientes(); // Vuelve a cargar los datos desde la base de datos
+            MessageBox.Show("Datos actualizados.", "Refrescar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

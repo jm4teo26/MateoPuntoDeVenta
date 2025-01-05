@@ -11,10 +11,17 @@ namespace Pantallas
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmClientes());
+            InicializarBaseDeDatos();
+            Application.Run(new frmUsuarios());
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+        }
+        static void InicializarBaseDeDatos()
+        {
+            var db = new Datos.SqLiteDbContext();
+            //db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
         }
     }
 }
