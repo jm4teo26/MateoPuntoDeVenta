@@ -12,7 +12,7 @@ namespace Pantallas
         {
             ApplicationConfiguration.Initialize();
             InicializarBaseDeDatos();
-            Application.Run(new frmCategorias());
+            Application.Run(new frmProductos());
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.

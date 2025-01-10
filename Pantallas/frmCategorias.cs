@@ -25,91 +25,53 @@ namespace Pantallas
         }
         private void CargarCategorias()
         {
-            using (var context = new SqLiteDbContext())
-            {
-                dgvCategorias.DataSource = context.Categorias.ToList();
-            }
+            dgvCategorias.DataSource = Categoria.ObtenerCategorias();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            var nuevaCategoria = new Categoria
             {
-                MessageBox.Show("El nombre de la categoría es obligatorio.", "Advertencia");
-                return;
-            }
+                Nombre = txtNombre.Text
+            };
 
-            using (var context = new SqLiteDbContext())
-            {
-                var nuevaCategoria = new Categoria
-                {
-                    Nombre = txtNombre.Text.Trim()
-                };
-
-                context.Categorias.Add(nuevaCategoria);
-                context.SaveChanges();
-            }
-
-            MessageBox.Show("Categoría agregada correctamente.");
-            txtNombre.Clear();
+            Categoria.AgregarCategoria(nuevaCategoria);
+            MessageBox.Show("Categoría agregada con éxito.");
             CargarCategorias();
+            LimpiarFormulario();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (dgvCategorias.SelectedRows.Count == 0)
+            if (dgvCategorias.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Seleccione una categoría para actualizar.", "Advertencia");
-                return;
+                var categoriaSeleccionada = (Categoria)dgvCategorias.SelectedRows[0].DataBoundItem;
+                categoriaSeleccionada.Nombre = txtNombre.Text;
+
+                Categoria.ActualizarCategoria(categoriaSeleccionada);
+                MessageBox.Show("Categoría actualizada con éxito.");
+                CargarCategorias();
+                LimpiarFormulario();
             }
-
-            int idCategoria = Convert.ToInt32(dgvCategorias.SelectedRows[0].Cells["Id"].Value);
-
-            using (var context = new SqLiteDbContext())
+            else
             {
-                var categoria = context.Categorias.Find(idCategoria);
-                if (categoria != null)
-                {
-                    categoria.Nombre = txtNombre.Text.Trim();
-                    context.SaveChanges();
-
-                    MessageBox.Show("Categoría actualizada correctamente.");
-                    txtNombre.Clear();
-                    CargarCategorias();
-                }
-                else
-                {
-                    MessageBox.Show("Categoría no encontrada.", "Error");
-                }
+                MessageBox.Show("Seleccione una categoría para actualizar.");
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvCategorias.SelectedRows.Count == 0)
+            if (dgvCategorias.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Seleccione una categoría para eliminar.", "Advertencia");
-                return;
+                var categoriaSeleccionada = (Categoria)dgvCategorias.SelectedRows[0].DataBoundItem;
+
+                Categoria.EliminarCategoria(categoriaSeleccionada.Id);
+                MessageBox.Show("Categoría eliminada con éxito.");
+                CargarCategorias();
             }
-
-            int idCategoria = Convert.ToInt32(dgvCategorias.SelectedRows[0].Cells["Id"].Value);
-
-            using (var context = new SqLiteDbContext())
+            else
             {
-                var categoria = context.Categorias.Find(idCategoria);
-                if (categoria != null)
-                {
-                    context.Categorias.Remove(categoria);
-                    context.SaveChanges();
-
-                    MessageBox.Show("Categoría eliminada correctamente.");
-                    txtNombre.Clear();
-                    CargarCategorias();
-                }
-                else
-                {
-                    MessageBox.Show("Categoría no encontrada.", "Error");
-                }
+                MessageBox.Show("Seleccione una categoría para eliminar.");
             }
         }
 
@@ -129,14 +91,19 @@ namespace Pantallas
         {
             if (dgvCategorias.SelectedRows.Count > 0)
             {
-                txtNombre.Text = dgvCategorias.SelectedRows[0].Cells["Nombre"].Value.ToString();
+                var categoriaSeleccionada = (Categoria)dgvCategorias.SelectedRows[0].DataBoundItem;
+                txtNombre.Text = categoriaSeleccionada.Nombre;
             }
+        }
+        private void LimpiarFormulario()
+        {
+            txtNombre.Clear();
+            dgvCategorias.ClearSelection();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             CargarCategorias();
-            MessageBox.Show("Datos actualizados correctamente.", "Información");
         }
     }
 }
